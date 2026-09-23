@@ -51,7 +51,7 @@ fun AppNavigation() {
             )
         ) { backStackEntry ->
             val claseId = backStackEntry.arguments?.getInt("claseId") ?: 0
-            DetalleScreen(navController, claseId)
+            DetalleScreen(navController, claseId, reservas)
         }
         composable(
             route = Screen.Confirmacion.route,
@@ -62,7 +62,7 @@ fun AppNavigation() {
         ) { backStackEntry ->
             val claseId = backStackEntry.arguments?.getInt("claseId") ?: 0
             val horarioIndex = backStackEntry.arguments?.getInt("horarioIndex") ?: 0
-            ConfirmacionScreen(navController, claseId, horarioIndex, reservas)
+            ConfirmacionScreen(navController, claseId, horarioIndex)
         }
     }
 }

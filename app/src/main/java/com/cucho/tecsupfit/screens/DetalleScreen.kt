@@ -36,11 +36,16 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.cucho.tecsupfit.data.buscarClasePorId
+import com.cucho.tecsupfit.model.Reserva
 import com.cucho.tecsupfit.navigation.Screen
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun DetalleScreen(navController: NavController, claseId: Int) {
+fun DetalleScreen(
+    navController: NavController,
+    claseId: Int,
+    reservas: MutableList<Reserva>
+) {
 
     val clase = buscarClasePorId(claseId)
 
@@ -150,6 +155,14 @@ fun DetalleScreen(navController: NavController, claseId: Int) {
 
                 Button(
                     onClick = {
+                        reservas.add(
+                            Reserva(
+                                nombreClase = clase.nombre,
+                                horario = clase.horarios[horarioSeleccionado],
+                                sala = clase.sala,
+                                estado = "Confirmada"
+                            )
+                        )
                         navController.navigate(
                             Screen.Confirmacion.createRoute(
                                 claseId = clase.id,
