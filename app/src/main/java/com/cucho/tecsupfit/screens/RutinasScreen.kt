@@ -36,14 +36,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.cucho.tecsupfit.model.InfoRutina
 import com.cucho.tecsupfit.navigation.BarraInferior
-
-data class InfoRutina(
-    val nombre: String,
-    val seriesReps: String,
-    val duracion: String,
-    val nivel: String,
-)
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
