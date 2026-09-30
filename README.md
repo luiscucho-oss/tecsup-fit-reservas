@@ -142,6 +142,78 @@ agregar un elemento.
 
 <img width="417" height="845" alt="Captura de pantalla 2026-09-30 000654" src="https://github.com/user-attachments/assets/10c2c0ea-ef9b-4fe8-822d-4c4c56aa0d31" />
 
+## Mejora con IA
+
+Esta rama (`mejora-ia`) parte de `main` e incorpora una mejora funcional y un
+rediseño visual, ambos realizados con **Gemini**, integrado en Android Studio.
+
+### Mejora funcional
+
+Se agregó la posibilidad de **cancelar una reserva** con un `AlertDialog` de
+confirmación:
+
+- Las reservas con estado "Confirmada" muestran un botón "Cancelar reserva"
+- Las reservas con estado "Completada" no lo muestran, porque no tiene sentido
+  cancelar una clase que ya ocurrió
+- El diálogo muestra el nombre de la clase y el horario antes de confirmar
+- Solo al confirmar se elimina la reserva de la lista compartida
+
+El estado del diálogo guarda **la reserva seleccionada** (`Reserva?`) y no un
+booleano, de modo que el mismo valor sirve para saber si el diálogo está abierto,
+qué texto mostrar y qué elemento eliminar. El diálogo se cierra poniendo ese
+estado en `null` en los tres caminos posibles: confirmar, cancelar y tocar fuera.
+
+En Compose un diálogo no se abre con una función imperativa: se incluye o se
+excluye del árbol de UI según el estado, y la recomposición hace el resto.
+
+### Mejora visual
+
+Rediseño de las seis pantallas con un mismo criterio: cabeceras con degradado
+construidas con `Brush.verticalGradient`, tarjetas con esquinas redondeadas y
+elevación, iconos dentro de círculos de color y etiquetas tipo píldora. Todos los
+colores provienen de `MaterialTheme.colorScheme`, sin valores hexadecimales fijos.
+
+### Documentación de los prompts
+
+Los tres prompts utilizados, junto con lo que hubo que corregir de cada
+respuesta, están documentados en [PROMPTS.md](PROMPTS.md).
+
+## Capturas de la mejora
+
+**Inicio**
+
+<img width="375" height="785" alt="image" src="https://github.com/user-attachments/assets/8b510e3d-3eb9-4f5c-b37c-644c7820d2fc" />
+
+
+**Detalle de clase**
+
+<img width="408" height="813" alt="image" src="https://github.com/user-attachments/assets/9806e3b2-542d-4297-ac67-6b5d12ac3eaf" />
+
+
+**Confirmación**
+
+<img width="436" height="813" alt="image" src="https://github.com/user-attachments/assets/dd920b69-4e5d-4961-b23c-360c15246adb" />
+
+
+**Mis reservas**
+
+<img width="427" height="809" alt="image" src="https://github.com/user-attachments/assets/9197599b-cf56-45e5-92a6-4a551429ced2" />
+
+
+**AlertDialog de cancelación**
+
+<img width="425" height="812" alt="image" src="https://github.com/user-attachments/assets/e57c3c4a-342d-4bda-8d38-bf2b276d9b4b" />
+
+
+**Rutinas**
+
+<img width="412" height="812" alt="image" src="https://github.com/user-attachments/assets/17d6f848-7aad-42ac-9593-6f99a531ac39" />
+
+
+**Perfil**
+
+<img width="417" height="802" alt="image" src="https://github.com/user-attachments/assets/cd05bf97-9d45-48c6-8c77-602eceb9f7a6" />
+
 
 ## Cómo ejecutar
 
